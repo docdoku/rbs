@@ -119,3 +119,9 @@ a.notselected {
 	background-color : #aaa;
 	color : #fff;
 }
+
+input.resourceColor {
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+}
