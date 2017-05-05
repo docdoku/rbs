@@ -70,6 +70,7 @@ def configurePom(def pom) {
 	}
 }
 
+def generateMissingI18n() {
   JsonSlurper jsonSlurper = new JsonSlurper()
     File rootDir = new File(".")
     rootDir.eachFileRecurse {
