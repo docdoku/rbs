@@ -152,6 +152,10 @@ input.resourceColor {
   padding: 0px;
 }
 
+div.extendColor {
+  padding-top: 10px;
+}
+
 a.structure {
   color: black;
 }
@@ -218,4 +222,8 @@ a.structure:hover {
 
 .resources-tree a:hover {
   color: #ff8500 !important;
+}
+
+.this-bell:hover i {
+    visibility: visible;
 }
