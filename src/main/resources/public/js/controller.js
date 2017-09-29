@@ -454,15 +454,19 @@ function RbsController($scope, template, model, date, route) {
     });
   };
 
-  $scope.collapseResourceType = function(resourceType) {
+  $scope.collapseResourceType = function(resourceType, needToSaveTreeState) {
     resourceType.expanded = undefined;
     $scope.deselectResources(resourceType);
-    $scope.saveTreeState();
+    if (needToSaveTreeState !== false) {
+      $scope.saveTreeState();
+    }
   };
 
   $scope.collapseStructure = function(structure) {
     structure.expanded = undefined;
-    structure.types.forEach($scope.collapseResourceType)
+    structure.types.forEach(function(resourceType) {
+      $scope.collapseResourceType (resourceType, false);
+    });
     $scope.deselectStructure(structure);
     $scope.saveTreeState();
   };
@@ -569,6 +573,7 @@ function RbsController($scope, template, model, date, route) {
     } else {
       $scope.selectStructure(structure);
     }
+    $scope.saveTreeState();
   };
 
   $scope.switchSelectStructureSettings = function(structure) {
