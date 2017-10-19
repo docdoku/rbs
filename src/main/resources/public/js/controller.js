@@ -165,10 +165,10 @@ function RbsController($scope, template, model, date, route) {
         $scope.initStructuresManage(false, $scope.currentResourceType);
         $scope.isManage = undefined;
       } else {
-        $scope.initStructures(true);
+        $scope.initStructures(false);
       }
       $scope.initResources();
-      $scope.$apply();
+
     });
 
     //when date picker of calendar directive is used
@@ -230,7 +230,6 @@ function RbsController($scope, template, model, date, route) {
       }
     );
     model.recordedSelections.allResources = false;
-    model.bookings.applyFilters();
   };
 
   var sort_by = function(field, reverse, primer) {
@@ -294,6 +293,7 @@ function RbsController($scope, template, model, date, route) {
           })
         );
         $scope.selectedStructure = $scope.structuresWithTypes[0];
+        model.bookings.applyFilters();
       });
     });
   };
