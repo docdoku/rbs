@@ -992,6 +992,13 @@ function RbsController($scope, template, model, date, route) {
       } else {
         $scope.editedBooking.byOccurrences = false;
       }
+      $scope.editedBooking._slots.sort(
+        sort_by('id', false, function(a) {
+          return a;
+        })
+      );
+      $scope.editedBooking.startMoment = $scope.editedBooking._slots[0].startMoment;
+      $scope.editedBooking.endMoment = $scope.editedBooking._slots[0].endMoment;
     }
     $scope.initBookingDates(
       $scope.editedBooking.startMoment,
@@ -1010,7 +1017,7 @@ function RbsController($scope, template, model, date, route) {
             $scope.slots = data;
             $scope.slots.slots.sort(
               sort_by('startHour', false, function(a) {
-                return a.toUpperCase();
+                return a;
               })
             );
             $scope.selectedSlotStart = $scope.slots.slots
@@ -1828,7 +1835,7 @@ function RbsController($scope, template, model, date, route) {
         return periodDay.number;
       }
     );
-    //Perioc less than a day
+    //Periodic less than a day
     //if($scope.showDaySelection) {
     if (selectedDays[$scope.editedBooking.startMoment.day()] === undefined) {
       // search the next following day (higher number)
